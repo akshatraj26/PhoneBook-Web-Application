@@ -69,7 +69,7 @@ The Phonebook Web Application is a Django-based project designed to help users m
 6. **Access the application**:
    - Open your web browser and go to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to view the application.
    - For the Django admin interface, go to [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/).
-```
+
 
 ## Usage
 
@@ -107,6 +107,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - [phonenumber_field Documentation](https://github.com/stefanstoeckl/django-phonenumber-field)
 - [Django Crispy Forms Documentation](https://django-crispy-forms.readthedocs.io/en/latest/)
 - Online tutorials and resources for guidance and best practices.
-```
-
-Feel free to make any further adjustments to match your project's specifics!
