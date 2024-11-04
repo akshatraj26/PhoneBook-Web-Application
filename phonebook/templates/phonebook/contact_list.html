@@ -1,0 +1,47 @@
+{% extends "phonebook/_base.html" %}
+{% load tailwind_filters %}
+
+{% block title %}
+  All Contacts
+{% endblock title %}
+
+{% block content %}
+<div class="max-w-lg mx-auto bg-gray-700 rounded-lg p-4">
+    <h1 class="text-4xl mb-4 text-center text-white">Contacts</h1>
+
+    <div class="space-y-4"> <!-- Space between contact cards -->
+        {% for contact in page_obj %}
+        <div class="flex justify-between items-center p-4 bg-gray-500 rounded-lg shadow hover:shadow-lg transition-shadow duration-200">
+            <div class="flex-1 text-black-600 ">
+                <a href="{% url 'contact-detail' contact.pk %}" class="block">
+                    <p class="font-medium text-lg">{{ contact.name }}</p>
+                    <p class="text-sm">📞 {{ contact.phone_number }}</p>
+                </a>
+            </div>
+            <div>
+                <a href="https://wa.me/{{ contact.phone_number }}" target="_blank" class="block">
+                    <p class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors duration-200">Call</p>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="flex justify-center mt-6 space-x-2">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="px-3 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition-colors duration-200">&laquo; First</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="px-3 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition-colors duration-200">Previous</a>
+        {% endif %}
+
+        <span class="px-3 py-2 bg-gray-300 rounded-lg">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="px-3 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition-colors duration-200">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="px-3 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition-colors duration-200">Last &raquo;</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends "phonebook/_base.html" %}
+{% load tailwind_filters %}
+
+{% block title %}
+  Contact Details
+{% endblock title %}
+
+{% block content %}
+<div class="w-full max-w-md mx-auto my-7 py-5 rounded-lg bg-gray-700">  <!-- Set a maximum width -->
+    <h1 class="text-3xl sm:text-4xl mb-2 text-center text-white">Contact Details</h1>
+    <div class="border-solid border-gray-900 hover:shadow-lg shadow-stone-900 rounded-lg px-6 py-6">  <!-- Keep padding for spaciousness -->
+        <div class="flex flex-col sm:flex-row gap-4 py-4">
+            {% if user.is_authenticated %}
+            <a href="{% url 'update-contact' person.pk %}" class="flex-1 border-solid bg-green-300 hover:cursor-pointer hover:bg-green-600 py-3 rounded-lg text-center">Edit</a>
+            
+            <form action="{% url 'delete-contact' person.pk %}" method="post" class="flex-1">
+                {% csrf_token %}
+                <input type="submit" value="Delete" class="w-full border-solid bg-red-300 hover:cursor-pointer hover:bg-red-600 py-3 rounded-lg text-center" onclick="return confirm('Are you sure you want to delete this?');">
+            </form>
+            {% endif %}
+            
+        </div>
+
+        <p class="text-lg text-left mt-3 text-xl text-white"><strong>Name: </strong>{{ person.name }}</p>
+        <p class="text-sm py-3 text-left text-white"><strong>Phone Number: </strong>{{ person.phone_number }}</p>
+        <p class="text-sm py-3 text-left text-white"><strong>Email: </strong>{{ person.email }}</p>
+        <p class="text-sm py-3 text-left text-white"><strong>Job: </strong>{{ person.job }}</p>
+        <p class="text-sm py-3 text-left text-white"><strong>Label: </strong>{{ person.label|title }}</p>
+    </div>
+</div>
+{% endblock content %}

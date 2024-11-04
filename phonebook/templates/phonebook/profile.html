@@ -1,0 +1,48 @@
+{% extends "phonebook/_base.html" %}
+{% load tailwind_filters %}
+
+{% block title %}
+  Profile
+{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10"> <!-- Increase column width -->
+            <div class="card rounded-lg shadow-lg"> <!-- Added shadow-lg for more depth -->
+                <div class="card-header text-center bg-primary text-white rounded-t-lg">
+                    <h4>User Profile</h4>
+                </div>
+                <div class="card-body rounded-b-lg bg-gray-600 text-white p-6"> <!-- Increased padding for more space -->
+                    <div class="text-center mb-4">
+                        <!-- <img src="{{ user.profile.image.url }}" alt="Profile Picture" class="rounded-circle" width="150"> -->
+                    </div>
+                    <h5 class="text-center">{{ user.username }}</h5>
+                    <p class="text-center text-white">{{ user.email }}</p>
+                    
+                    <hr class="border-solid border-white my-2">
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p><strong>First Name:</strong> {{ user.first_name }}</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+                        </div>
+                        <!-- <div class="col-sm-6">
+                            <p><strong>Phone:</strong> {{ user.profile.phone }}</p>
+                        </div> -->
+                        <!-- <div class="col-sm-6">
+                            <p><strong>Address:</strong> {{ user.profile.address }}</p>
+                        </div> -->
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <a href="{% url 'edit_profile' %}" class="btn btn-outline-primary">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

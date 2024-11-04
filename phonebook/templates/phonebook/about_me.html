@@ -1,0 +1,88 @@
+{% extends 'phonebook/_base.html' %}
+{% load static %}
+{% load static %}
+{% block title %}
+  About Me
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="image-section">
+        <img src="{% static 'images/DSC_1701.jpg' %}" alt="Akshat Raj" style="visibility: hidden;">
+    </div>
+    <div class="content-section">
+        <h1>Akshat Raj</h1>
+        <p><strong>Web Developer and Software Engineer in Noida, Uttar Pradesh</strong></p>
+        <a href="https://github.com/akshatraj26" class="button" target="_blank">View my repo</a>
+        <p>Greetings, I’m Akshat. I’m a web developer. I am a fan of fashion, technology, and food. I’m also interested in reading and arts. Feel free to reach out!</p>
+        <p>
+            <a href="mailto:akshatraj2607@gmail.com" class="mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+          </svg>
+        </a> </p>
+    </div>
+</div>
+ 
+<style>
+    .container {
+        display: flex;
+        background-color: #7871712a;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 800px;
+        width: 100%;
+        margin: 20px auto;
+    }
+    .image-section {
+        flex: 1;
+        background: url('{% static "images/DSC_1701.jpg" %}') center center/cover no-repeat; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .image-section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 215, 0, 0.2); /* Add the sun effect */
+        mix-blend-mode: screen;
+    }
+    .content-section {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .content-section h1 {
+        font-size: 24px;
+        margin: 0;
+        color: #fff;
+    }
+    .content-section p {
+        color: #fff;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    .button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .button:hover {
+        background-color: #555;
+    }
+</style>
+{% endblock content %}

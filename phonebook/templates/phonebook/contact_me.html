@@ -1,0 +1,36 @@
+{% extends "phonebook/_base.html" %}
+{% load tailwind_filters %}
+
+{% block title %}
+  Contact Me
+{% endblock title %}
+
+{% block content %}
+<div class="w-full max-w-lg mx-auto my-7 py-5 rounded-lg bg-gray-600 shadow-lg">
+    <h1 class="text-3xl sm:text-4xl mb-4 text-center text-white">Contact Me</h1>
+    <form action="{% url 'contact' %}" method="post" class="space-y-4 px-6">
+        {% csrf_token %}
+        
+        <div>
+            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+            <input type="text" name="name" id="name" required class="mt-1 block w-full border border-gray-400 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2" style="color: black !important;" placeholder="Your Name">
+        </div>
+
+        <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" name="email" id="email" required class="mt-1 block w-full border border-gray-400 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2" style="color: black !important;" placeholder="Your Email">
+        </div>
+
+        <div>
+            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+            <textarea name="message" id="message" rows="4" required class="mt-1 block w-full border border-gray-400 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2" style="color: black !important;" placeholder="Your Message"></textarea>
+        </div>
+
+        <div class="flex justify-center">
+            <button type="submit" class="w-full border border-transparent rounded-md shadow-sm px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                Send Message
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "phonebook/_base.html" %}
+{% load tailwind_filters %}
+
+
+{% block content %}
+<h2>Edit Profile</h2>
+
+    <form action="" method="post" class="flex-1">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="flex flex-col sm:flex-row gap-3">
+        <button type="submit" class="bg-green-200 px-3 py-2 hover:cursor-pointer hover:bg-green-700 rounded-lg">Save Changes</button>
+        <a href="{% url 'profile' %}" class="bg-red-200 px-5 py-3 hover:cursor-pointer hover:bg-red-700 rounded-lg">Cancel</a>
+    </form>
+     
+
+    </div>
+
+{% endblock content %}
+
+
