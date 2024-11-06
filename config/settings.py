@@ -127,8 +127,6 @@ import os
 
 STATIC_URL = "/static/"
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Default primary key field type
@@ -142,3 +140,17 @@ PHONENUMBER_DEFAULT_REGION = None
 # Use to add stying
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'tailwind'
 CRISPY_TEMPLATE_PACK = "tailwind"
+
+
+# SMTP configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # or the SMTP server you're using
+EMAIL_PORT = 587  # or the correct port for your SMTP provider
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'akshatraj2607@gmail.com'  # Your email address
+EMAIL_HOST_PASSWORD = 'vsreirrefndqlofw'  # Your email password or app password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles', 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

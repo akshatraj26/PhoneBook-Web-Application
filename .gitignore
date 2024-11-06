@@ -1,5 +1,5 @@
 db.sqlite3
-.env
+.phonebook
 
 
 users/__pycache__/__init__.cpython-312.pyc

@@ -1,0 +1,8 @@
+asgiref==3.8.1
+crispy-tailwind==1.0.3
+Django==5.1.2
+django-crispy-forms==2.3
+django-phonenumber-field==8.0.0
+phonenumbers==8.13.49
+sqlparse==0.5.1
+tzdata==2024.2

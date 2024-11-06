@@ -138,7 +138,7 @@ class ContactView(View):
         try:
             send_mail(
                 subject=f"Contact Form Submission from {name}",
-                message=message,
+                message=f"from {email}: {message} ",
                 from_email=email,
                 recipient_list= ['akshatraj2607@gmail.com'],
                 fail_silently=False
