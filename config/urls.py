@@ -25,6 +25,7 @@ urlpatterns = [
     path("", include('phonebook.urls')),
     path("accounts/", include('django.contrib.auth.urls')),
     path("users/", include('users.urls')),
+    path("api/", include('phonebook_api.urls')),
 ]
 
 if settings.DEBUG:
