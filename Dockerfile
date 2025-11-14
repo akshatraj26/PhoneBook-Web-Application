@@ -5,13 +5,18 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y \
-	libpq-dev gcc python3-dev musl-dev && apt-get clean
+RUN apt-get update && apt-get install -y --no-install-recommends \
+	build-essential \
+	 gcc \
+	 && rm -rf /var/lib/apt/lists/*
 
 # Copy project file to /app
 COPY . /app/
 
-RUN pip install --no-cache -r requirements.txt
+# Install python dependencies
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
 RUN python manage.py makemigrations && python manage.py migrate
 
 # Expose port 8000 for Django
