@@ -7,6 +7,7 @@ env
 
 config/__pycache__/
 phonebook/__pycache__/
+phonebook/migrations/*
 phonebook_api/__pycache__/
 users/__pycache__/
 

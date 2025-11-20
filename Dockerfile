@@ -6,8 +6,10 @@ WORKDIR /app
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-	build-essential \
 	 gcc \
+         python3-dev \
+	 default-libmysqlclient-dev build-essential \
+         pkg-config \
 	 && rm -rf /var/lib/apt/lists/*
 
 # Copy project file to /app
@@ -17,7 +19,7 @@ COPY . /app/
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
-RUN python manage.py makemigrations && python manage.py migrate
+# RUN python manage.py makemigrations && python manage.py migrate
 
 # Expose port 8000 for Django
 EXPOSE 8000

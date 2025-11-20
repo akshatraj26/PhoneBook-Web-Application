@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   web:
      build: .
@@ -11,3 +9,26 @@ services:
        - PYTHONDONTWRITEBYTECODE=1
        - PYTHONUNBUFFERED=1
 
+     volumes:
+       - .:/app
+     depends_on:
+       - db
+
+
+  db:
+    image: mysql:8.0
+    restart: always
+    container_name: phonebook_db
+    environment:
+       MYSQL_DATABASE: ${DB_NAME}
+       MYSQL_USER: ${DB_USER}
+       MYSQL_PASSWORD: ${DB_PWD}
+       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PWD}
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

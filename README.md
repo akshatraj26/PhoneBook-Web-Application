@@ -1,183 +1,225 @@
+# 📘 **PhoneBook Web Application**
 
-# Phonebook Web Application
-
-## Overview
-
-The Phonebook Web Application is a Django-based project designed to help users manage their contacts efficiently and securely. With a user-friendly interface built using Tailwind CSS and Bootstrap, this application provides a seamless experience for users to store, edit, and view their contact information. Each user has a private space, ensuring that personal data remains confidential and secure.
+A simple and functional **PhoneBook web application** built with **Django**, styled with **TailwindCSS + Bootstrap**, and Dockerized with **MySQL** as the database.
+This project also uses **Crispy Forms** for better UI and provides CRUD operations for managing phone contacts.
 
 ---
 
-## Features
+## 🚀 **Features**
 
-* **User Authentication** – Secure login system allowing users to create accounts and access their personal contact list.
-* **Add Contacts** – Save new contacts with name, phone number, email, and address.
-* **Edit Contacts** – Update existing contact details anytime.
-* **View Contacts** – Access a detailed list of all saved contacts.
-* **Responsive Design** – Built with Tailwind CSS and Bootstrap for all screen sizes.
-* **Privacy** – Users can only manage their own contacts.
-* **Phone Number Handling** – Uses `phonenumber_field` for standardized phone number storage.
-
----
-
-## Technologies Used
-
-* **Django** – Python web framework for rapid development.
-* **HTML/CSS** – For structure and design.
-* **Tailwind CSS** – Utility-first CSS framework.
-* **Bootstrap** – Responsive front-end toolkit.
-* **SQLite** – Lightweight database for local development.
-* **phonenumber_field** – For phone number validation and storage.
-* **Crispy Forms** – For improved form rendering.
-* **Docker** – Used for containerization and CI/CD pipeline setup.
+* Create, read, update, delete phonebook entries
+* MySQL database integration
+* Django ORM + Class-Based Views
+* TailwindCSS + Bootstrap UI
+* Crispy Forms for UI enhancements
+* Fully Dockerized (Django + MySQL)
+* Environment variables for security
+* REST API support using Django REST Framework (optional)
 
 ---
 
-## Installation
+## 🛠️ **Tech Stack**
 
-### Prerequisites
-
-* Python 3.12
-* Django
-* Pip (Python package installer)
-* Docker *(optional, for containerized setup)*
-
----
-
-### Steps
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/yourusername/phonebook-web-app.git
-   cd phonebook-web-app
-   ```
-
-2. **Install dependencies:**
-   Make sure you are inside an activated virtual environment, then install dependencies:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Create Migrations:**
-   Generate migration files for your Django models:
-
-   ```bash
-   python manage.py makemigrations
-   ```
-
-4. **Apply Migrations:**
-   Apply the generated migrations to set up your database:
-
-   ```bash
-   python manage.py migrate
-   ```
-
-5. **Create a Superuser (optional):**
-   To access the Django admin panel:
-
-   ```bash
-   python manage.py createsuperuser
-   ```
-
-6. **Run the Development Server:**
-   Start the application locally:
-
-   ```bash
-   python manage.py runserver
-   ```
-
-7. **Access the Application:**
-
-   * App: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-   * Admin Panel: [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
+* **Backend:** Django
+* **Database:** MySQL
+* **Frontend:** TailwindCSS, Bootstrap, Crispy Forms
+* **API (Optional):** Django REST Framework
+* **Containerization:** Docker & Docker Compose
+* **Environment Management:** `.env` file
 
 ---
 
-## Docker & CI/CD Configuration
+# 📂 **Project Structure**
 
-The project supports **Docker integration** for easy deployment and CI/CD pipeline automation.
-
-### Docker Setup
-
-1. **Build the Docker Image:**
-
-   ```bash
-   docker build -t phonebook-app .
-   ```
-
-2. **Run the Docker Container:**
-
-   ```bash
-   docker run -d -p 8000:8000 phonebook-app
-   ```
-
-3. **View Running Containers:**
-
-   ```bash
-   docker ps
-   ```
-
-4. **Stop the Container:**
-
-   ```bash
-   docker stop <container_id>
-   ```
-
-### CI/CD Integration
-
-* Docker ensures **consistent builds** and **isolated environments** across all deployment stages.
-* You can easily integrate this setup with platforms like **GitHub Actions**, **GitLab CI**, or **Jenkins** for automated testing and deployment.
-* During CI/CD execution, migrations should also be run automatically using:
-
-  ```bash
-  python manage.py makemigrations && python manage.py migrate
-  ```
+```
+PhoneBook/
+├── config/
+├── phonebook/
+├── phonebook_api/
+├── users/
+├── static/
+├── templates/
+├── docker-compose.yml
+├── Dockerfile
+├── requirements.txt
+└── .env
+```
 
 ---
 
-## Usage
+# 🔧 **Installation (Without Docker)**
 
-1. **Register an account** to create your personal contact list.
-2. **Log in** to access and manage your contacts.
-3. **Add, edit, and view** your saved contacts using the intuitive dashboard.
+### **1. Clone the repository**
+
+```bash
+git clone <your-repo-url>
+cd PhoneBook
+```
+
+### **2. Create & activate virtual environment**
+
+```bash
+python3 -m venv env
+source env/bin/activate
+```
+
+### **3. Install dependencies**
+
+```bash
+pip install -r requirements.txt
+```
+
+### **4. Apply migrations**
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### **5. Run the server**
+
+```bash
+python manage.py runserver
+```
 
 ---
 
-## Screenshots
+# 🔐 **Environment Variables**
 
-Include your screenshots here to showcase the application.
+Create a `.env` file in the project root:
 
-* ![Screenshot 1](screenshots/1.png)
-* ![Screenshot 2](screenshots/2.png)
-* ![Screenshot 3](screenshots/3.png)
-* ![Screenshot 4](screenshots/4.png)
-* ![Screenshot 5](screenshots/5.png)
-* ![Screenshot 6](screenshots/6.png)
-* ![Screenshot 7](screenshots/7.png)
-* ![Screenshot 8](screenshots/8.png)
-* ![Screenshot 9](screenshots/9.png)
-
----
-
-## Contributing
-
-Contributions are welcome! Please fork the repository and submit a pull request with your improvements.
+```
+DB_NAME=your_db_name
+DB_USER=your_user
+DB_PWD=your_password
+DB_HOST=db
+DB_PORT=3306
+SECRET_KEY=your_secret_key
+DEBUG=True
+```
 
 ---
 
-## License
+# 🐳 **Docker Setup (Using docker-compose)**
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+### **1. Build and start containers**
+
+```bash
+docker compose up -d --build
+```
+
+### **2. View running containers**
+
+```bash
+docker ps
+```
+
+### **3. Stop containers**
+
+```bash
+docker compose down
+```
 
 ---
 
-## Acknowledgements
+## 🛠️ **Running Django Migrations in Docker**
 
-* [Django Documentation](https://docs.djangoproject.com/en/stable/)
-* [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-* [Bootstrap Documentation](https://getbootstrap.com/docs/)
-* [phonenumber_field Documentation](https://github.com/stefanstoeckl/django-phonenumber-field)
-* [Django Crispy Forms Documentation](https://django-crispy-forms.readthedocs.io/en/latest/)
-* Online tutorials and community resources for guidance and best practices.
+Start containers:
 
+```bash
+docker compose up -d
+```
+
+Run migrations inside the running container:
+
+```bash
+docker compose exec web python manage.py makemigrations
+docker compose exec web python manage.py migrate
+```
+
+---
+
+# 🐳 **Building Docker Image (Manual Method — WITHOUT docker-compose)**
+
+*(You asked for a separate section — this is completely independent.)*
+
+### **1. Build the Django image**
+
+```bash
+docker build -t phonebook_app .
+```
+
+### **2. Run the Django container**
+
+```bash
+docker run -d -p 8000:8000 --env-file .env phonebook_app
+```
+
+### **3. Build and run MySQL container separately**
+
+```bash
+docker run -d \
+  --name phonebook_db \
+  -e MYSQL_DATABASE=your_db_name \
+  -e MYSQL_USER=your_user \
+  -e MYSQL_PASSWORD=your_password \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -p 3306:3306 \
+  mysql:8.0
+```
+
+### **4. Run Django migrations manually (single container)**
+
+```bash
+docker exec -it <container_name_or_id> python manage.py makemigrations
+docker exec -it <container_name_or_id> python manage.py migrate
+```
+
+### **5. View logs**
+
+```bash
+docker logs -f phonebook_app
+```
+
+---
+
+# 📡 **API Endpoints (If REST API is used)**
+
+| Method | Endpoint              | Description      |
+| ------ | --------------------- | ---------------- |
+| GET    | `/api/contacts/`      | List contacts    |
+| POST   | `/api/contacts/`      | Create contact   |
+| GET    | `/api/contacts/<id>/` | Retrieve contact |
+| PUT    | `/api/contacts/<id>/` | Update contact   |
+| DELETE | `/api/contacts/<id>/` | Delete contact   |
+
+---
+
+# 🧪 **Running Tests**
+
+```bash
+python manage.py test
+```
+
+---
+
+# 🔧 **Common Docker Commands**
+
+| Command                        | Description                 |
+| ------------------------------ | --------------------------- |
+| `docker compose up -d --build` | Build + run containers      |
+| `docker compose exec web bash` | Shell inside web container  |
+| `docker compose logs -f web`   | View Django logs            |
+| `docker compose down -v`       | Remove containers + volumes |
+
+---
+
+# 🤝 **Contributing**
+
+Pull requests are welcome. For major changes, please open an issue first.
+
+---
+
+# 📜 **License**
+
+MIT License.
